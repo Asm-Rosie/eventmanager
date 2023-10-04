@@ -46,46 +46,6 @@ pub extern "C" fn create_file() {
 }
 
 
-#[no_mangle]
-pub extern "C" fn hello_devworld() {
-    let result = 4 + 6356;
-    println!("Hi! {}", result);
-
-}
-
-#[no_mangle]
-pub extern "C" fn helloworld() {
-    
-
-    let file = File::open("data.txt").expect("Failed to open file");
-    let reader = BufReader::new(file);
-
-    let mut current_summary = String::new();
-    let mut current_description = String::new();
-    let mut current_starting_point = String::new();
-    let mut current_ending_date = String::new();
-
-    
-
-    for line in reader.lines() {
-        let line = line.expect("failed to read line");
-
-        if line.starts_with("Summary:") {
-            current_summary = line.trim_start_matches("Summary:").trim().to_string()
-        } else if line.starts_with("Description:") {
-            current_description = line.trim_start_matches("Description:").trim().to_string();
-        } else if line.starts_with("Starting point:") {
-            current_starting_point = line.trim_start_matches("Starting point:").trim().to_string();
-        } else if line.starts_with("Ending date:")  {
-            current_ending_date = line.trim_start_matches("Ending date:").trim().to_string();
-
-            println!("Summary: {}", current_summary);
-            println!("Description: {}", current_description);
-            
-
-        }
-    }
-}
 
 pub struct ExposedStrings {
     pub summaries: *mut c_char,
