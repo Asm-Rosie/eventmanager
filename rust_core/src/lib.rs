@@ -217,15 +217,9 @@ pub extern "C" fn deleteBlockCall(input: *const i8,) -> io::Result<()> {
     let input_str = c_str.to_str().expect("invalid UTF-8 input");
 
     let id_to_find = input_str;
-    //let id_to_find = "e0d600f3-5043-4f3f-a1eb-3b22ad06df63"; 😐 (errors might occur while phrasing)
-    //let id_to_find = "e0d600f3-5043-4f3f-a1eb-3b22ad06df68"; ✅
-    //let id_to_find = "e0d600f3-5043-4f3f-a1eb-3b22ad06df62"; ✅
-    //let id_to_find = "e0d600f3-5043-4f3f-a1eb-3b22ad06df65"; ✅
     let filename = "data.txt";
-    let filename2 = "temp2.txt"; // Replace with the actual file path
+    let filename2 = "temp2.txt";
 
-    //bugs: if line number is from 1-6, at the beginning there is a blank line which is not supposed to be there
-    //critical bug: if line number is at the last block, block is being deleted, but uuid wont be deleted
 
     match find_line_number_for_id(id_to_find, filename)? {
         Some(line_number) => {
