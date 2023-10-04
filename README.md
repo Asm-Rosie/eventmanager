@@ -11,7 +11,7 @@ release removed due of an unexpected error that the app could not be open, I am 
 ## How to build
 
 1. download the source code
-2. open [app.xcodeproj](https://github.com/AkameTheCoder/eventmanager/tree/main/app/app.xcodeproj) with xcode
+2. open [app.xcodeproj](https://github.com/AkameTheCoder/eventmanager/tree/main/app/app.xcodeproj) with [xcode](https://apps.apple.com/de/app/xcode/id497799835?l=en-GB&mt=12)
 3. now we need to combine the x64 and arm library together.
 
 - first approach, execute the shell script in which will combine these 2 librarys automatically for you (recommended if you dont wanna mess with the shell)
