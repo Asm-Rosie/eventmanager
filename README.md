@@ -1,7 +1,7 @@
 # eventmanager
 manage your personal tasks! 
 
-
+# MacOS instruction
 ## How to build
 
 1. download the source code
