@@ -2,7 +2,8 @@
 manage your personal tasks! 
 
 # MacOS instructions
-the following below will explain how you can build it yourself using macOS, a prebuilt app can be found in the [release tab](https://github.com/AkameTheCoder/eventmanager/releases). 
+~~the following below will explain how you can build it yourself using macOS, a prebuilt app can be found in the [release tab](https://github.com/AkameTheCoder/eventmanager/releases).~~
+release removed due of an unexpected error that the app could not be open, I am investing the issue as soon as possible!
 ### quick introduction of how you can use the prebuilt version
 - download the .dmg file from the release tab
 - open the dmg file move the application into your application folder
