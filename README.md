@@ -24,3 +24,5 @@ manage your personal tasks!
 - open a terminal and enter `cd` then press cmd + v on your keyboard to paste in the copied path, in my case it would look like this `cd /Users/maya/Desktop/app/rust_core/` press enter
 - now paste in the following command into the terminal: `lipo -create -output libanvil.a libanvil_x86_64.a libanvil_aarch64.a`, now you combined the libs
 - optionally you can delete the 2 libs `[libanvil_x86_64.a, libanvil_aarch64.a]`, but you dont have to
+
+4. now you can run and compile the code with xcode
