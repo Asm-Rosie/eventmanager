@@ -17,4 +17,10 @@ manage your personal tasks!
 - now enter in your terminal `chmod +x combine_libs.sh` in order to make the script executable
 - run the script using the following command: `./combine_libs.sh`
 
-*now we have successfully combined the libs to one lib*
+*now we have successfully combined the libs to one lib, the script also removes the 2 input files `[libanvil_x86_64.a, libanvil_aarch64.a]`*
+
+### for the second approach 
+- navigate from the source code into the app folder, right click the folder named `rust_core` and click copy
+- open a terminal and enter `cd` then press cmd + v on your keyboard to paste in the copied path, in my case it would look like this `cd /Users/maya/Desktop/app/rust_core/` press enter
+- now paste in the following command into the terminal: `lipo -create -output libanvil.a libanvil_x86_64.a libanvil_aarch64.a`, now you combined the libs
+- optionally you can delete the 2 libs `[libanvil_x86_64.a, libanvil_aarch64.a]`, but you dont have to
