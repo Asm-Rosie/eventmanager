@@ -263,7 +263,7 @@ struct SecondView: View {
         }
     
     func deleteTask(withId id: String) {
-        deleteBlockCall(id)
+        delete_block_call(id)
     }
     
     
@@ -320,7 +320,7 @@ struct SecondView: View {
                     ), isEditing: $isEditing, task: task, deleteAction: deleteTask, onDelete: {
                         tasks.removeAll { $0.id == task.id }
                         deletedTaskIndex = index
-                        deleteBlockCall(task.id)
+                        delete_block_call(task.id)
                         // Call the function to remove the line from the text file (deleteBlockCall)
                         deletedTaskIndex = index
                     }, requestDataAction: requestData, toggleEditMode: {
@@ -333,9 +333,7 @@ struct SecondView: View {
             }
             
             Text("This is the Second View")
-            Button("request") {
-                requestData()
-            }
+            
                 
         }
             

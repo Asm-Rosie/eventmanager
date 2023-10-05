@@ -11,5 +11,6 @@ echo "successfully created combined library at: ${current_directory}/${output_li
 
 echo "cleaning up.."
 rm "$x86_64_library" "$aarch64_library"
-echo "deleted \n${current_directory}/${x86_64_library}\n${current_directory}/${aarch64_library}"
+echo "deleted ${current_directory}/${x86_64_library}"
+echo "deleted ${current_directory}/${aarch64_library}"
 echo "cleaned up! :)"
