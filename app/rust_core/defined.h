@@ -6,9 +6,7 @@ typedef struct ExposedStrings {
     const char* uuid;
 } ExposedStrings;
 
-void hello_devworld();
 void print_string_to_console(const char* input_string, const char* input_string2, const char* input_string3);
-void helloworld();
 ExposedStrings expose_strings(void);
-void deleteBlockCall(const char* input);
+void delete_block_call(const char* input);
 void create_file();
