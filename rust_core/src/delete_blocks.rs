@@ -4,7 +4,7 @@ use std::io::ErrorKind;
 use std::io::Result;
 use std::fs::OpenOptions;
 
-pub fn deleteBlocks(input: String) {
+pub fn delete_Blocks(input: String) {
      
     let enddate = input;
     
