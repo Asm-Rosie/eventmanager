@@ -57,6 +57,7 @@ struct ContentView: View {
                 let inputCString2 = descriptionInput.cString(using: .utf8)
                 let inputCString3 = dateString
                 print_string_to_console(inputCString, inputCString2, inputCString3)
+                currentdate()
             }
             
             Button("request") {
@@ -263,7 +264,7 @@ struct SecondView: View {
         }
     
     func deleteTask(withId id: String) {
-        deleteBlockCall(id)
+        delete_block_call(id)
     }
     
     
@@ -320,7 +321,7 @@ struct SecondView: View {
                     ), isEditing: $isEditing, task: task, deleteAction: deleteTask, onDelete: {
                         tasks.removeAll { $0.id == task.id }
                         deletedTaskIndex = index
-                        deleteBlockCall(task.id)
+                        delete_block_call(task.id)
                         // Call the function to remove the line from the text file (deleteBlockCall)
                         deletedTaskIndex = index
                     }, requestDataAction: requestData, toggleEditMode: {
