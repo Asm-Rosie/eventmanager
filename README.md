@@ -52,6 +52,6 @@ the following below will explain how you can build it yourself using macOS, a pr
 ### in case you added new functions in the library and want to use these new function now in xcode
 first of all, I am assuming that you have already done the steps shown above 
 
-it would be too much time effort to explain now anything by myself if there is already a [repo](https://github.com/thombles/dw2019rust/blob/master/modules/04%20-%20Build%20automation.md) explaining it pretty well how to use external rust libraries with swift
+it would be too much time effort to explain now anything by myself if there is already a [repo](https://github.com/thombles/dw2019rust/blob/master/modules/00%20-%20Setup%20Instructions.md) explaining it pretty well how to use external rust libraries with swift
 
 also credits to [@thombles](https://github.com/thombles) for giving me the idea and inspiration to start this project!
