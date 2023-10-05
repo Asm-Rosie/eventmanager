@@ -6,13 +6,11 @@ use std::path::PathBuf;
 use std::path::Path;
 use chrono::prelude::*;
 use std::fs::OpenOptions;
-use std::io::ErrorKind;
-use std::io::Result;
 use std::fs;
 use std::ffi::{CString, CStr};
 use std::os::raw::c_char;
 use std::fs::read_to_string;
-use chrono::{NaiveDate, Utc};
+use chrono::{Local, Datelike, Utc, offset::TimeZone};
 use std::thread::sleep;
 use std::time::Duration;
 use uuid::Uuid;
@@ -21,8 +19,8 @@ use uuid::Uuid;
 use crate::check_if_uuid_is_deleted::check_if_uuid_is_deleted;
 mod check_if_uuid_is_deleted;
 
-use crate::deleteBlocks::deleteBlocks;
-mod deleteBlocks;
+use crate::delete_blocks::delete_blocks;
+mod delete_blocks;
 
 use crate::find_line_number_for_id::find_line_number_for_id;
 mod find_line_number_for_id;
@@ -33,6 +31,29 @@ mod delete_lines_by_numbers;
 use crate::print_lines_around::print_lines_around;
 mod print_lines_around;
 
+#[no_mangle]
+pub extern "C" fn currentdate() {
+    let local = Local::now();
+    let utc = Utc::now();
+    
+    // Extract the date part (year, month, and day)
+    let date = local.date();
+
+    // Format the date as a string
+    let formatted_date = date.format("%Y-%m-%d").to_string();
+    
+    // Format the UTC date and time as a string
+    let formatted_utc_datetime = utc.format("%Y-%m-%d %H:%M:%S").to_string();
+
+    // Print the formatted date and time
+    println!("Formatted Date: {}", formatted_date);
+    println!("Formatted UTC Date and Time: {}", formatted_utc_datetime);
+}
+
+#[no_mangle]
+pub extern "C" fn print_hello() {
+    println!("Hello, world!");
+}
 
 #[no_mangle]
 pub extern "C" fn create_file() {
@@ -44,8 +65,6 @@ pub extern "C" fn create_file() {
         println!("file already exists");
     }
 }
-
-
 
 pub struct ExposedStrings {
     pub summaries: *mut c_char,
@@ -131,15 +150,17 @@ pub extern "C" fn print_string_to_console(
     let input_str1 = c_str1.to_str().expect("invalid UTF-8 input");
     let input_str2 = c_str2.to_str().expect("invalid UTF-8 input");
 
-    let local_time = chrono::Local::now();
+    let local = chrono::Local::now();
+    let date = local.date();
+    let date_time = date.format("%Y-%m-%d").to_string();
     let id = Uuid::new_v4();
     
 
     println!("summary: {}", input_str);
     println!("description: {}", input_str1);
-    println!("starting point: {}", local_time);
+    println!("starting point: {}", date_time);
     println!("ending date: {}", input_str2);
-    println!("fixed: {}", local_time);
+    println!("fixed: {}", date_time);
     println!("id: {}", id);
 
     // Get the current working directory
@@ -150,13 +171,10 @@ pub extern "C" fn print_string_to_console(
 
     let filecontent = format!(
         "Ending date: {}\nSummary: {}\nDescription: {}\nStarting point: {}\nID: {}\n\n",
-        input_str2, input_str, input_str1, local_time, id
+        input_str2, input_str, input_str1, date_time, id
     );
 
     println!("File name: {}", document_dir.display());
-
-    
-    
 
     let file = OpenOptions::new()
         .append(true)
@@ -173,9 +191,6 @@ pub extern "C" fn print_string_to_console(
 #[no_mangle]
 pub extern "C" fn check_if_event_expired() {
     
-
-    
-
     loop {
         let file = File::open("data.txt").expect("Failed to open file");
         let reader = BufReader::new(file);
@@ -194,7 +209,7 @@ pub extern "C" fn check_if_event_expired() {
                     println!("The target date has passed");
                 } else if current_date == target_date {
                     println!("the target date is today");
-                    deleteBlocks((&target_date).to_string())
+                    delete_blocks((&target_date).to_string())
                 } else {
                     println!("still not expired huh");
                 }
@@ -209,7 +224,7 @@ pub extern "C" fn check_if_event_expired() {
 }
 
 #[no_mangle]
-pub extern "C" fn deleteBlockCall(input: *const i8,) -> io::Result<()> {
+pub extern "C" fn delete_block_call(input: *const i8,) -> io::Result<()> {
     let c_str = unsafe {
         std::ffi::CStr::from_ptr(input)
     };
@@ -218,7 +233,7 @@ pub extern "C" fn deleteBlockCall(input: *const i8,) -> io::Result<()> {
 
     let id_to_find = input_str;
     let filename = "data.txt";
-    let filename2 = "temp2.txt";
+    let filename2 = "temp2.txt"; 
 
 
     match find_line_number_for_id(id_to_find, filename)? {
@@ -226,17 +241,12 @@ pub extern "C" fn deleteBlockCall(input: *const i8,) -> io::Result<()> {
             println!("Line number for ID {}: {}", id_to_find, line_number);
             let lines_to_delete = print_lines_around(line_number, filename)?;
 
-        
-
             delete_lines_by_numbers(filename, &lines_to_delete)?;
 
             check_if_uuid_is_deleted(filename2, id_to_find)?;
 
             std::fs::rename(filename2, filename).expect("failed to rename file");
         
-
-
-
         }
         
         None => println!("ID {} not found in the file.", id_to_find),
@@ -245,21 +255,3 @@ pub extern "C" fn deleteBlockCall(input: *const i8,) -> io::Result<()> {
     Ok(())
 
 }
-
-/*for line in reader.lines() {
-        let line = line.expect("failed to get lines");
-        
-        if line.starts_with("Summary:") {
-            let summary = line.trim_start_matches("Summary: ").trim();
-            summaries.push(summary.to_string());
-        } else if line.starts_with("Description:") {
-            let description = line.trim_start_matches("Description: ").trim();
-            descriptions.push(description.to_string());
-        } else if line.starts_with("Starting point:") {
-            let start_date = line.trim_start_matches("Starting point: ").trim();can you stop using this 
-            start_dates.push(start_date.to_string());
-        } else if line.starts_with("Ending date:") {
-            let end_date = line.trim_start_matches("Ending date: ").trim();
-            end_dates.push(end_date.to_string());
-        }
-    }*/
