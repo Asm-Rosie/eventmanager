@@ -334,9 +334,7 @@ struct SecondView: View {
             }
             
             Text("This is the Second View")
-            Button("request") {
-                requestData()
-            }
+            
                 
         }
             
