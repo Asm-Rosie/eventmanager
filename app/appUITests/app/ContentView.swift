@@ -332,7 +332,7 @@ struct SecondView: View {
                 
             }
             
-            Text("This is the Second View")
+            
             
                 
         }
