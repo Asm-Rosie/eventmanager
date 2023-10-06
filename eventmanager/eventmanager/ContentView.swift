@@ -214,6 +214,8 @@ struct TaskRow: View {
                 if self.isEditing {
                     self.task.summary = self.editedSummary
                     self.task.description = self.editedDescription
+                    self.task.endingDate = self.editedEndingDate
+                    edit_content(editedSummary, editedDescription, editedEndingDate)
                 }
                 self.isEditing.toggle()
             }) {
