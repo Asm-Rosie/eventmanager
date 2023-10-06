@@ -190,11 +190,12 @@ struct TaskRow: View {
             } else {
                 Text("Summary: \(task.summary)")
                 Text("Description: \(task.description)")
+                Text("Starting point:\(task.startingPoint)")
                 Text("Ending date: \(task.endingDate)")
             }
             
             
-            Text("Starting point: \(task.startingPoint)")
+            
             Spacer()
             Button("Delete Task") {
                 print("Summary: \(task.summary)")
