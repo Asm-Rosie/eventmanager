@@ -16,8 +16,7 @@
 		6C45D32A2ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D3292ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift */; };
 		6C45D33E2ACF8AF5004080E3 /* NavigationManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */; };
 		6C45D3422ACF90AE004080E3 /* shellscript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6C45D33F2ACF90AD004080E3 /* shellscript.sh */; };
-		6C45D3432ACF90AE004080E3 /* libanvil_x86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C45D3402ACF90AD004080E3 /* libanvil_x86_64.a */; };
-		6C45D3442ACF90AE004080E3 /* libanvil_aarch64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C45D3412ACF90AE004080E3 /* libanvil_aarch64.a */; };
+		6C45D3472ACF934B004080E3 /* libanvil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C45D3462ACF934B004080E3 /* libanvil.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +52,8 @@
 		6C45D3382ACF8943004080E3 /* defined.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defined.h; sourceTree = "<group>"; };
 		6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManagerView.swift; sourceTree = "<group>"; };
 		6C45D33F2ACF90AD004080E3 /* shellscript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shellscript.sh; sourceTree = "<group>"; };
-		6C45D3402ACF90AD004080E3 /* libanvil_x86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libanvil_x86_64.a; sourceTree = "<group>"; };
-		6C45D3412ACF90AE004080E3 /* libanvil_aarch64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libanvil_aarch64.a; sourceTree = "<group>"; };
+		6C45D3462ACF934B004080E3 /* libanvil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libanvil.a; path = rust_core/libanvil.a; sourceTree = "<group>"; };
+		6C45D3482ACF9353004080E3 /* libanvil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libanvil.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C45D3442ACF90AE004080E3 /* libanvil_aarch64.a in Frameworks */,
-				6C45D3432ACF90AE004080E3 /* libanvil_x86_64.a in Frameworks */,
+				6C45D3472ACF934B004080E3 /* libanvil.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +90,7 @@
 				6C45D31C2ACF887B004080E3 /* eventmanagerTests */,
 				6C45D3262ACF887B004080E3 /* eventmanagerUITests */,
 				6C45D3092ACF8879004080E3 /* Products */,
+				6C45D3452ACF934B004080E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,12 +146,19 @@
 			isa = PBXGroup;
 			children = (
 				6C45D3382ACF8943004080E3 /* defined.h */,
-				6C45D3412ACF90AE004080E3 /* libanvil_aarch64.a */,
-				6C45D3402ACF90AD004080E3 /* libanvil_x86_64.a */,
+				6C45D3482ACF9353004080E3 /* libanvil.a */,
 				6C45D33F2ACF90AD004080E3 /* shellscript.sh */,
 				6C45D3372ACF8942004080E3 /* eventmanager-Bridging-Header.h */,
 			);
 			path = rust_core;
+			sourceTree = "<group>";
+		};
+		6C45D3452ACF934B004080E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C45D3462ACF934B004080E3 /* libanvil.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
