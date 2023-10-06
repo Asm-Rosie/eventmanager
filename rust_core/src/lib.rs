@@ -39,13 +39,10 @@ pub extern "C" fn currentdate() {
     // Extract the date part (year, month, and day)
     let date = local.date();
 
-    // Format the date as a string
     let formatted_date = date.format("%Y-%m-%d").to_string();
     
-    // Format the UTC date and time as a string
     let formatted_utc_datetime = utc.format("%Y-%m-%d %H:%M:%S").to_string();
 
-    // Print the formatted date and time
     println!("Formatted Date: {}", formatted_date);
     println!("Formatted UTC Date and Time: {}", formatted_utc_datetime);
 }
