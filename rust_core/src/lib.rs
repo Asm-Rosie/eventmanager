@@ -31,26 +31,8 @@ mod delete_lines_by_numbers;
 use crate::print_lines_around::print_lines_around;
 mod print_lines_around;
 
-#[no_mangle]
-pub extern "C" fn currentdate() {
-    let local = Local::now();
-    let utc = Utc::now();
-    
-    // Extract the date part (year, month, and day)
-    let date = local.date();
 
-    let formatted_date = date.format("%Y-%m-%d").to_string();
-    
-    let formatted_utc_datetime = utc.format("%Y-%m-%d %H:%M:%S").to_string();
 
-    println!("Formatted Date: {}", formatted_date);
-    println!("Formatted UTC Date and Time: {}", formatted_utc_datetime);
-}
-
-#[no_mangle]
-pub extern "C" fn print_hello() {
-    println!("Hello, world!");
-}
 
 #[no_mangle]
 pub extern "C" fn create_file() {
@@ -251,4 +233,30 @@ pub extern "C" fn delete_block_call(input: *const i8,) -> io::Result<()> {
 
     Ok(())
 
+}
+
+#[no_mangle]
+pub extern "C" fn edit_content(
+    input: *const i8,
+    input2: *const i8,
+    input3: *const i8
+) {
+    let c_str = unsafe {
+        std::ffi::CStr::from_ptr(input)
+    };
+    let c_str1 = unsafe {
+        std::ffi::CStr::from_ptr(input2)
+    };
+    let c_str2 = unsafe {
+        std::ffi::CStr::from_ptr(input3)
+    };
+
+    let input_str = c_str.to_str().expect("invalid UTF-8 input");
+    let input_str1 = c_str1.to_str().expect("invalid UTF-8 input");
+    let input_str2 = c_str2.to_str().expect("invalid UTF-8 input");
+
+    println!("{},\n{},\n{}", input_str, input_str1, input_str2);
+
+
+    
 }
