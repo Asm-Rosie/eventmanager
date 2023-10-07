@@ -8,7 +8,7 @@ the following below will explain how you can build it yourself using macOS, a pr
 - download the .dmg file from the release tab
 - open the dmg file move the application into your application folder
 - run it!
-## How to build the app (MacOS)
+## ~~How to build the app (MacOS)~~ there are errors right now with compiling in xcode, the issue is being investigated
 
 1. download the source code
 2. open [app.xcodeproj](https://github.com/AkameTheCoder/eventmanager/tree/main/app/app.xcodeproj) with [xcode](https://apps.apple.com/de/app/xcode/id497799835?l=en-GB&mt=12)
