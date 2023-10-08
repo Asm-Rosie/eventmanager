@@ -8,7 +8,7 @@ the following below will explain how you can build it yourself using macOS, a pr
 - download the .dmg file from the release tab
 - open the dmg file move the application into your application folder
 - run it!
-## ~~How to build the app (MacOS)~~ there are errors right now with compiling in xcode, the issue is being investigated
+## How to build the app (MacOS)
 
 1. download the source code
 2. open [app.xcodeproj](https://github.com/AkameTheCoder/eventmanager/tree/main/app/app.xcodeproj) with [xcode](https://apps.apple.com/de/app/xcode/id497799835?l=en-GB&mt=12)
@@ -20,8 +20,9 @@ We have now 2 methods to build our source code
 
 
 ### for the first approach
-- navigate into the source code using cd in a shell
-- run the following command in a terminal: `chmod +x install.sh`
+- open a terminal and clone the repo `git clone https://github.com/AkameTheCoder/eventmanager.git`
+- navigate into the repo using following command: `cd eventmanager`
+- run the following command in a terminal to make the install script executable: `chmod +x install.sh`
 - run the install script: `./install.sh`
 - follow the instructions in the script
 - after installing you can build the source code anytime with `./build.sh`
