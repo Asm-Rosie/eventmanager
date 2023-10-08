@@ -15,8 +15,7 @@
 		6C45D3282ACF887B004080E3 /* eventmanagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D3272ACF887B004080E3 /* eventmanagerUITests.swift */; };
 		6C45D32A2ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D3292ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift */; };
 		6C45D33E2ACF8AF5004080E3 /* NavigationManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */; };
-		6C45D3422ACF90AE004080E3 /* shellscript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6C45D33F2ACF90AD004080E3 /* shellscript.sh */; };
-		6C45D3472ACF934B004080E3 /* libanvil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C45D3462ACF934B004080E3 /* libanvil.a */; };
+		8DF8695F2AD35E6100B47F50 /* binded_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF8695E2AD35E6100B47F50 /* binded_lib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +50,8 @@
 		6C45D3372ACF8942004080E3 /* eventmanager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eventmanager-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C45D3382ACF8943004080E3 /* defined.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defined.h; sourceTree = "<group>"; };
 		6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManagerView.swift; sourceTree = "<group>"; };
-		6C45D33F2ACF90AD004080E3 /* shellscript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = shellscript.sh; sourceTree = "<group>"; };
 		6C45D3462ACF934B004080E3 /* libanvil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libanvil.a; path = rust_core/libanvil.a; sourceTree = "<group>"; };
-		6C45D3482ACF9353004080E3 /* libanvil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libanvil.a; sourceTree = "<group>"; };
+		8DF8695E2AD35E6100B47F50 /* binded_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = binded_lib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C45D3472ACF934B004080E3 /* libanvil.a in Frameworks */,
+				8DF8695F2AD35E6100B47F50 /* binded_lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,8 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				6C45D3382ACF8943004080E3 /* defined.h */,
-				6C45D3482ACF9353004080E3 /* libanvil.a */,
-				6C45D33F2ACF90AD004080E3 /* shellscript.sh */,
+				8DF8695E2AD35E6100B47F50 /* binded_lib.a */,
 				6C45D3372ACF8942004080E3 /* eventmanager-Bridging-Header.h */,
 			);
 			path = rust_core;
@@ -266,7 +263,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C45D3422ACF90AE004080E3 /* shellscript.sh in Resources */,
 				6C45D3132ACF887B004080E3 /* Preview Assets.xcassets in Resources */,
 				6C45D3102ACF887B004080E3 /* Assets.xcassets in Resources */,
 			);
