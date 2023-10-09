@@ -1,5 +1,12 @@
 #!/bin/bash
-echo "checking your OS.."
+
+# Set terminal colors
+GREEN=$(tput setaf 2)   # Green text
+RED=$(tput setaf 1)     # Red text
+RESET=$(tput sgr0)      # Reset text color
+
+
+echo "${GREEN}Checking your OS..${RESET}"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "OS is MacOS, running build script!"
@@ -14,7 +21,7 @@ else
 fi
 
 if command -v cargo >/dev/null 2>&1; then
-  echo "cargo is installed"
+  echo "${GREEN}cargo is installed${RESET}"
   echo "checking if targets are up to date.."
   command rustup target add x86_64-apple-darwin
   command rustup target add aarch64-apple-darwin
@@ -42,9 +49,17 @@ fi
 
 command chmod +x build.sh
 
+echo "---------------------------------------------------------------------------"
 echo "do you want to build the source code right now or do you want to do it later?"
 echo "you can also build the source later using following command: ./build.sh"
-echo "y/n"
+# Set terminal colors
+
+# Your input text
+text="${GREEN}y${RESET}/${RED}n${RESET}"
+
+# Print the colored text
+echo "$text"
+
 read answer
 if [ "$answer" == "y" ]; then
   echo "starting build process"
