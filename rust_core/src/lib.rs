@@ -28,6 +28,9 @@ mod find_line_number_for_id;
 use crate::delete_lines_by_numbers::delete_lines_by_numbers;
 mod delete_lines_by_numbers;
 
+use crate::get_string_in_range::get_string_in_range;
+mod get_string_in_range;
+
 use crate::print_lines_around::print_lines_around;
 mod print_lines_around;
 
@@ -237,12 +240,16 @@ pub extern "C" fn delete_block_call(input: *const i8,) -> io::Result<()> {
 
 #[no_mangle]
 pub extern "C" fn edit_content(
-    input: *const i8,
+    input1: *const i8,
     input2: *const i8,
-    input3: *const i8
-) {
+    input3: *const i8,
+    input4: *const i8,
+    input5: *const i8,
+    input6: *const i8,
+    input7: *const i8
+)  -> io::Result<()> {
     let c_str = unsafe {
-        std::ffi::CStr::from_ptr(input)
+        std::ffi::CStr::from_ptr(input1)
     };
     let c_str1 = unsafe {
         std::ffi::CStr::from_ptr(input2)
@@ -250,12 +257,57 @@ pub extern "C" fn edit_content(
     let c_str2 = unsafe {
         std::ffi::CStr::from_ptr(input3)
     };
+    let c_str3 = unsafe {
+        std::ffi::CStr::from_ptr(input4)
+    };
+    let c_str4 = unsafe {
+        std::ffi::CStr::from_ptr(input5)
+    };
+    let c_str5 = unsafe {
+        std::ffi::CStr::from_ptr(input6)
+    };
+    let c_str6 = unsafe {
+        std::ffi::CStr::from_ptr(input7)
+    };
 
     let input_str = c_str.to_str().expect("invalid UTF-8 input");
     let input_str1 = c_str1.to_str().expect("invalid UTF-8 input");
     let input_str2 = c_str2.to_str().expect("invalid UTF-8 input");
+    let input_str3 = c_str3.to_str().expect("invalid UTF-8 input");
+    let input_str4 = c_str4.to_str().expect("invalid UTF-8 input");
+    let input_str5 = c_str5.to_str().expect("invalid UTF-8 input");
+    let input_str6 = c_str6.to_str().expect("invalid UTF-8 input");
 
-    println!("{},\n{},\n{}", input_str, input_str1, input_str2);
+    
+
+    let file_path = "data.txt";
+    let id_to_find = input_str6;
+
+    match find_line_number_for_id(id_to_find, &file_path)? {
+        Some(line_number) => {
+            println!("Line number for ID {}: {}", id_to_find, line_number);
+            let lines_allowed = print_lines_around(line_number, &file_path)?;
+
+            let summary_before = input_str;
+            let description_before = input_str1;
+            let ending_date_before = input_str2;
+
+            if let Err(err) = get_string_in_range(file_path, summary_before, description_before, ending_date_before, input_str3, input_str4, input_str5, lines_allowed) {
+                eprintln!("Error: {}", err);
+            }
+
+            
+
+            
+        }
+
+        None => println!("ID {} not found in the file.", id_to_find),
+    }
+
+    Ok(())
+
+
+
 
 
     

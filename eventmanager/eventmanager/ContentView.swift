@@ -212,10 +212,18 @@ struct TaskRow: View {
             Button(action: {
                 
                 if self.isEditing {
+                
+                    edit_content(
+                        task.summary,
+                        task.description,
+                        task.endingDate,
+                        editedSummary,
+                        editedDescription,
+                        editedEndingDate,
+                        task.id)
                     self.task.summary = self.editedSummary
                     self.task.description = self.editedDescription
                     self.task.endingDate = self.editedEndingDate
-                    edit_content(editedSummary, editedDescription, editedEndingDate)
                 }
                 self.isEditing.toggle()
             }) {
