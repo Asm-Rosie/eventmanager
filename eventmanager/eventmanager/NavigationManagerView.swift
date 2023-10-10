@@ -31,8 +31,18 @@ struct NavigationManagerView: View {
             switch selectedSideBarItem {
             case .my_tasks:
                 SecondView()
+                    .onAppear() {
+                        DispatchQueue.global(qos: .background).async {
+                            play_ui_sound()
+                        }
+                    }
             case .create_task:
                 ContentView()
+                    .onAppear() {
+                        DispatchQueue.global(qos: .background).async {
+                            play_ui_sound()
+                        }
+                    }
             }
         }
     }
