@@ -12,8 +12,11 @@ use std::os::raw::c_char;
 use std::fs::read_to_string;
 use chrono::{Local, Datelike, Utc, offset::TimeZone};
 use std::thread::sleep;
+use std::thread;
 use std::time::Duration;
 use uuid::Uuid;
+use rodio::{Decoder, OutputStream, Sink};
+
 
 
 use crate::check_if_uuid_is_deleted::check_if_uuid_is_deleted;
@@ -30,6 +33,9 @@ mod delete_lines_by_numbers;
 
 use crate::get_string_in_range::get_string_in_range;
 mod get_string_in_range;
+
+use crate::play_audio_mp3::play_audio_mp3;
+mod play_audio_mp3;
 
 use crate::print_lines_around::print_lines_around;
 mod print_lines_around;
@@ -306,9 +312,11 @@ pub extern "C" fn edit_content(
 
     Ok(())
 
+}
 
-
-
-
-    
+#[no_mangle]
+pub extern "C" fn play_ui_sound() {
+    let music_thread = thread::spawn(|| {
+        play_audio_mp3("ui-click-43196.mp3");
+    });
 }
