@@ -19,3 +19,4 @@ void edit_content(
                   const char* input6,
                   const char* input7
                   );
+void play_ui_sound();

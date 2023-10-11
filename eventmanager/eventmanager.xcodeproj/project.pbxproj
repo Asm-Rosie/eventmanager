@@ -15,6 +15,8 @@
 		6C45D3282ACF887B004080E3 /* eventmanagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D3272ACF887B004080E3 /* eventmanagerUITests.swift */; };
 		6C45D32A2ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D3292ACF887B004080E3 /* eventmanagerUITestsLaunchTests.swift */; };
 		6C45D33E2ACF8AF5004080E3 /* NavigationManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */; };
+		6CCC26EF2AD657F5005D8A64 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCC26EE2AD657F5005D8A64 /* CoreAudio.framework */; };
+		6CCC26F12AD657FA005D8A64 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CCC26F02AD657FA005D8A64 /* AudioToolbox.framework */; };
 		8DF8695F2AD35E6100B47F50 /* binded_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF8695E2AD35E6100B47F50 /* binded_lib.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		6C45D3382ACF8943004080E3 /* defined.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defined.h; sourceTree = "<group>"; };
 		6C45D33D2ACF8AF5004080E3 /* NavigationManagerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationManagerView.swift; sourceTree = "<group>"; };
 		6C45D3462ACF934B004080E3 /* libanvil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libanvil.a; path = rust_core/libanvil.a; sourceTree = "<group>"; };
+		6CCC26EE2AD657F5005D8A64 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6CCC26F02AD657FA005D8A64 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8DF8695E2AD35E6100B47F50 /* binded_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = binded_lib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CCC26F12AD657FA005D8A64 /* AudioToolbox.framework in Frameworks */,
+				6CCC26EF2AD657F5005D8A64 /* CoreAudio.framework in Frameworks */,
 				8DF8695F2AD35E6100B47F50 /* binded_lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +159,8 @@
 		6C45D3452ACF934B004080E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CCC26F02AD657FA005D8A64 /* AudioToolbox.framework */,
+				6CCC26EE2AD657F5005D8A64 /* CoreAudio.framework */,
 				6C45D3462ACF934B004080E3 /* libanvil.a */,
 			);
 			name = Frameworks;
