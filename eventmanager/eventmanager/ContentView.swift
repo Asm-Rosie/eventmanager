@@ -1,6 +1,8 @@
 import SwiftUI
 import Foundation
 
+
+
 func convertDateToString(date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd" // Customize the date format as needed
@@ -54,7 +56,7 @@ struct ContentView: View {
             
             Button("Submit") {
                 DispatchQueue.global(qos: .background).async {
-                    play_ui_sound("ui-click.mp3")
+                    play_ui_sound("ui-click.mp3", Int32(mute.state))
                 }
                 
                 performAction()
@@ -62,7 +64,7 @@ struct ContentView: View {
                 let inputCString = summaryInput.cString(using: .utf8)
                 let inputCString2 = descriptionInput.cString(using: .utf8)
                 let inputCString3 = dateString
-                print_string_to_console(inputCString, inputCString2, inputCString3)
+                create_new_entry(inputCString, inputCString2, inputCString3)
             }
             
             Button("request") {
@@ -100,6 +102,12 @@ struct ContentView: View {
                     for end_date in end_datesArray {
                         print("ending at: \(end_date)")
                     }
+                }
+            }
+            
+            Button("test") {
+                DispatchQueue.global(qos: .background).async {
+                    play_ui_sound("ui-click.mp3", Int32(mute.state))
                 }
             }
             
@@ -208,7 +216,7 @@ struct TaskRow: View {
             HStack {
                 Button(action: {
                     DispatchQueue.global(qos: .background).async {
-                        play_ui_sound("empty_trash.mp3")
+                        play_ui_sound("empty-trash.mp3", Int32(mute.state))
                     }
                     print("Summary: \(task.summary)")
                     print("Description: \(task.description)")
@@ -226,7 +234,7 @@ struct TaskRow: View {
                 }
                 Button(action: {
                     DispatchQueue.global(qos: .background).async {
-                        play_ui_sound("ui-click.mp3")
+                        play_ui_sound("ui-click.mp3", Int32(mute.state))
                     }
                     if self.isEditing {
                     

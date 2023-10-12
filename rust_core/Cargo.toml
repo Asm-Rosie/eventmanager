@@ -18,3 +18,7 @@ features = [
     "fast-rng",          # Use a faster (but still sufficiently random) RNG
     "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
 ]
+
+[[resource]]
+path = "src/sounds/ui-click.mp3"
+path1 = "src/sounds/empty-trash.mp3"

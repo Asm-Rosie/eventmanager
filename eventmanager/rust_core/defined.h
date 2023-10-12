@@ -6,10 +6,10 @@ typedef struct ExposedStrings {
     const char* uuid;
 } ExposedStrings;
 
-void print_string_to_console(const char* input_string, const char* input_string2, const char* input_string3);
+void create_new_entry(const char* input_string, const char* input_string2, const char* input_string3);
 ExposedStrings expose_strings(void);
 void delete_block_call(const char* input);
-void create_file();
+void does_file_exist();
 void edit_content(
                   const char* input1,
                   const char* input2,
@@ -19,4 +19,5 @@ void edit_content(
                   const char* input6,
                   const char* input7
                   );
-void play_ui_sound(const char* sound_file);
+void play_ui_sound(const char* sound_file, int disabled);
+

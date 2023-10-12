@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct eventmanagerApp: App {
     init() {
-        create_file()
+        does_file_exist()
     }
     var body: some Scene {
         WindowGroup {
