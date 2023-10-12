@@ -54,7 +54,7 @@ struct ContentView: View {
             
             Button("Submit") {
                 DispatchQueue.global(qos: .background).async {
-                    play_ui_sound()
+                    play_ui_sound("ui-click.mp3")
                 }
                 
                 performAction()
@@ -208,7 +208,7 @@ struct TaskRow: View {
             HStack {
                 Button(action: {
                     DispatchQueue.global(qos: .background).async {
-                        play_ui_sound()
+                        play_ui_sound("empty_trash.mp3")
                     }
                     print("Summary: \(task.summary)")
                     print("Description: \(task.description)")
@@ -226,7 +226,7 @@ struct TaskRow: View {
                 }
                 Button(action: {
                     DispatchQueue.global(qos: .background).async {
-                        play_ui_sound()
+                        play_ui_sound("ui-click.mp3")
                     }
                     if self.isEditing {
                     

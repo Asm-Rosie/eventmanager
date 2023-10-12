@@ -33,14 +33,14 @@ struct NavigationManagerView: View {
                 SecondView()
                     .onAppear() {
                         DispatchQueue.global(qos: .background).async {
-                            play_ui_sound()
+                            play_ui_sound("ui-click.mp3")
                         }
                     }
             case .create_task:
                 ContentView()
                     .onAppear() {
                         DispatchQueue.global(qos: .background).async {
-                            play_ui_sound()
+                            play_ui_sound("ui-click.mp3")
                         }
                     }
             }

@@ -34,9 +34,6 @@ mod delete_lines_by_numbers;
 use crate::get_string_in_range::get_string_in_range;
 mod get_string_in_range;
 
-use crate::play_audio_mp3::play_audio_mp3;
-mod play_audio_mp3;
-
 use crate::print_lines_around::print_lines_around;
 mod print_lines_around;
 
@@ -315,8 +312,18 @@ pub extern "C" fn edit_content(
 }
 
 #[no_mangle]
-pub extern "C" fn play_ui_sound() {
-    let music_thread = thread::spawn(|| {
-        play_audio_mp3("ui-click-43196.mp3");
-    });
+pub extern "C" fn play_ui_sound(sound_file: *const c_char) {
+
+  let sound_file = unsafe { CStr::from_ptr(sound_file).to_str().unwrap() };
+
+  let (stream, stream_handle) = OutputStream::try_default().unwrap();
+  let sink = Sink::try_new(&stream_handle).unwrap();
+
+  let file = File::open(sound_file).unwrap();
+  let source = Decoder::new(BufReader::new(file)).unwrap();
+
+  sink.append(source);
+  sink.play();
+
+  thread::park();
 }
