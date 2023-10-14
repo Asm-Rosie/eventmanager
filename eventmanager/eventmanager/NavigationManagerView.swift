@@ -36,15 +36,10 @@ struct NavigationManagerView: View {
                 Text("Mute/Unmute")
             }
             .padding()
-            
-            Button(action: {
+            .onChange(of: muted) {
                 mute.state = muted ? 0 : 1
-                DispatchQueue.global(qos: .background).async {
-                    play_ui_sound("ui-click.mp3", Int32(mute.state))
-                }
-            }) {
-                Text("play sound")
             }
+            
         } detail: {
             switch selectedSideBarItem {
             case .my_tasks:
