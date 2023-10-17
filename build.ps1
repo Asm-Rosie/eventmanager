@@ -1,3 +1,9 @@
+$currentPath = Get-Location
+
+Copy-Item "$currentPath\rust_core\Cargo-win.toml" -Destination "$currentPath\rust_core\Cargo.toml"
+
+Write-Host "copied necessary files"
+
 Write-Host "Building Windows QtWidget application.."
 
 & rustup target add x86_64-pc-windows-msvc
