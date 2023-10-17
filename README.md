@@ -30,6 +30,7 @@ We have now 2 methods to build our source code
 4. now you can run and compile the code with [xcode](https://apps.apple.com/de/app/xcode/id497799835?l=en-GB&mt=12) by running in the terminal following command
 
    `cd eventmanager`
+   
    `open eventmanager.xcodeproj`
 
 
