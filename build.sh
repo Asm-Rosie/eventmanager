@@ -3,6 +3,8 @@ echo "checking your OS.."
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "OS is MacOS, running build script!"
+  cp "$(pwd)/rust_core/Cargo-mac.toml" "$(pwd)/rust_core/Cargo.toml"
+  echo "copied necessary files"
 
 elif [["$OSTYPE" == "linux-gnu"* ]]; then
   echo "OS is Linux, and Linux is currently not supported"
