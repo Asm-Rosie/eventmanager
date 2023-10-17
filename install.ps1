@@ -7,6 +7,16 @@ if ($cargoCommand) {
     if ($cargoVersionOutput -match 'cargo (.+?)') {
         $cargoVersion = $matches[1]
         Write-Host "Cargo is installed: $cargoVersion" -ForegroundColor Green
+        Write-Host "do you want to start the building for windows?"
+        Write-Host "1. Yes"
+        Write-Host "2. No"
+        $start_building = Read-Host ":"
+        if ($start_building -eq "1") {
+            & ./build.ps1
+        } else {
+            Write-Host "exiting"
+            exit 0
+        }
     }
 } else {
     Write-Host "Cargo is not installed." -ForegroundColor Red
