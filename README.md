@@ -33,5 +33,17 @@ We have now 2 methods to build our source code
    
    `open eventmanager.xcodeproj`
 
+# Windows Instructions
+
+## How to build
+
+- Download and install (QT)[https://www.qt.io/download-open-source] and the C++ [VS Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe). 
+- clone the repo `git clone https://github.com/AkameTheCoder/eventmanager.git`
+- navigate into the repo using following command: `cd eventmanager`
+- run the installer script with `install.ps1`
+- if you dont get prompted in the shell script to run the build script after you have installed anything successfully run the build script using this command `./build.ps1`
+- after that, open QT Creator, and open the project which is located in `qt-eventmanager`, be sure to configure the project with the msvc compiler
+- hit the run button and your application will be build
+
 
 
