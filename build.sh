@@ -35,7 +35,7 @@ if [ -f "eventmanager/rust_core/binded_lib.a" ]; then
   echo "backup created"
 fi
 echo "binding libraries.."
-command lipo -create -output $DESTINATION_FOLDER/binded_lib.a $X64_APPLE_INPUT_FOLDER/libeventmanager_core.dylib $ARM_APPLE_INPUT_FOLDER/libeventmanager_core.dylib
+command lipo -create -output $DESTINATION_FOLDER/binded_lib.a $X64_APPLE_INPUT_FOLDER/libeventmanager_core.a $ARM_APPLE_INPUT_FOLDER/libeventmanager_core.a
 echo "binded libraries successfully successfully"
 command lipo -info $DESTINATION_FOLDER/binded_lib.a
 echo "building finished successfully!, you can now build your app in Xcode by just hitting the run button"
