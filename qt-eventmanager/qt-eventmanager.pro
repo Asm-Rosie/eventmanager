@@ -34,9 +34,9 @@ DEPENDPATH += $$PWD/.
 
 # Windows
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -leventmanager_core
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -leventmanager_core.dll
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/./libeventmanager_core.a
-else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/./eventmanager_core.lib
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/./eventmanager_core.dll.lib
 win32: LIBS += -L$$PWD/./ -leventmanager_core.dll
 
 # MacOS
