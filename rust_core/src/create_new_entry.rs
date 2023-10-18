@@ -9,6 +9,7 @@ use std::io::BufRead;
 use std::fs;
 use std::fs::OpenOptions;
 use std::io::BufWriter;
+use dirs::document_dir;
 
 
 #[no_mangle]
@@ -44,21 +45,27 @@ pub extern "C" fn create_new_entry(
     println!("id: {}", id);
 
     // Get the current working directory
-    let mut document_dir = env::current_dir().expect("Failed to get current directory");
+    let mut file_path = "data.txt".to_string();
 
-    // Specify the file name
-    document_dir.push("data.txt");
+    if cfg!(target_os = "windows") {
+        if let Some(document_dir) = document_dir() {
+            file_path = document_dir.join("eventmanager_data").join("data.txt").to_str().unwrap().to_string();
+
+        } else {
+            println!("error");
+        }
+    }
 
     let filecontent = format!(
         "Ending date: {}\nSummary: {}\nDescription: {}\nStarting point: {}\nID: {}\n\n",
         input_str2, input_str, input_str1, date_time, id
     );
 
-    println!("File name: {}", document_dir.display());
+    println!("File name: {}", file_path);
 
     let file = OpenOptions::new()
         .append(true)
-        .open(&document_dir)
+        .open(&file_path)
         .unwrap_or_else(|err| panic!("Failed to open file: {}", err));
 
     let mut file = BufWriter::new(file);

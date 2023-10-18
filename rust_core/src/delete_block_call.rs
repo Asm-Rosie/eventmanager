@@ -15,20 +15,33 @@ pub extern "C" fn delete_block_call(input: *const i8,) -> io::Result<()> {
     let input_str = c_str.to_str().expect("invalid UTF-8 input");
 
     let id_to_find = input_str;
-    let filename = "data.txt";
+
+    let mut filename = "data.txt".to_string();
+
+    if cfg!(target_os = "windows") {
+        if let Some(document_dir) = dirs::document_dir() {
+            
+            filename = document_dir.join("eventmanager_data").join("data.txt").to_str().unwrap().to_string();
+            println!("file path: {}", filename);
+        } else {
+            println!("error");
+        }
+    }
+
+    
     let filename2 = "temp2.txt"; 
 
 
-    match find_line_number_for_id(id_to_find, filename)? {
+    match find_line_number_for_id(id_to_find, &filename)? {
         Some(line_number) => {
             println!("Line number for ID {}: {}", id_to_find, line_number);
-            let lines_to_delete = print_lines_around(line_number, filename)?;
+            let lines_to_delete = print_lines_around(line_number, &filename)?;
 
-            delete_lines_by_numbers(filename, &lines_to_delete)?;
+            delete_lines_by_numbers(&filename, &lines_to_delete)?;
 
             check_if_uuid_is_deleted(filename2, id_to_find)?;
 
-            std::fs::rename(filename2, filename).expect("failed to rename file");
+            std::fs::rename(filename2, &filename).expect("failed to rename file");
         
         }
         

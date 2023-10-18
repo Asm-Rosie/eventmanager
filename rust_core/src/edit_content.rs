@@ -4,9 +4,7 @@ use std::io::Result;
 use std::mem;
 use std::path::Path;
 use std::path::PathBuf;
-
-
-
+extern crate dirs;
 
 #[no_mangle]
 pub extern "C" fn edit_content(
@@ -50,7 +48,16 @@ pub extern "C" fn edit_content(
 
     
 
-    let file_path = "data.txt";
+    let mut file_path = "data.txt".to_string();
+
+    if cfg!(target_os = "windows") {
+        if let Some(document_dir) = dirs::document_dir() {
+            file_path = document_dir.join("\\eventmanager_data\\data.txt").to_str().unwrap().to_string();
+        } else {
+            return Err(io::Error::new(io::ErrorKind::Other, "Document directory not found"));
+        }
+    }
+
     let id_to_find = input_str6;
 
     match find_line_number_for_id(id_to_find, &file_path)? {
@@ -62,7 +69,7 @@ pub extern "C" fn edit_content(
             let description_before = input_str1;
             let ending_date_before = input_str2;
 
-            if let Err(err) = get_string_in_range(file_path, summary_before, description_before, ending_date_before, input_str3, input_str4, input_str5, lines_allowed) {
+            if let Err(err) = get_string_in_range(&file_path, summary_before, description_before, ending_date_before, input_str3, input_str4, input_str5, lines_allowed) {
                 eprintln!("Error: {}", err);
             }
 

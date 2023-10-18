@@ -4,7 +4,7 @@ use std::os::raw::c_char;
 use std::path::PathBuf;
 use std::path::Path;
 use std::ffi::CString;
-
+extern crate dirs;
 
 
 
@@ -19,7 +19,20 @@ pub struct ExposedStrings {
 #[no_mangle]
 pub extern "C" fn expose_strings() -> ExposedStrings {
 
-    let file = File::open("data.txt").expect("Failed to open file");
+
+    let mut file_path = "data.txt".to_string();
+
+    if cfg!(target_os = "windows") {
+        if let Some(document_dir) = dirs::document_dir() {
+            
+            file_path = document_dir.join("eventmanager_data").join("data.txt").to_str().unwrap().to_string();
+            println!("file path: {}", file_path);
+        } else {
+            println!("error");
+        }
+    }
+
+    let file = File::open(&file_path).expect("Failed to open file");
     let reader = BufReader::new(file);
 
     let mut summaries: Vec<String> = Vec::new();

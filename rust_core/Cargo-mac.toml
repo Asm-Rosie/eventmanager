@@ -10,6 +10,7 @@ crate-type = ["lib", "staticlib"]
 [dependencies]
 chrono = "0.4"
 rodio = "0.17.1"
+dirs = "5.0.1"
 
 [dependencies.uuid]
 version = "1.4.1"

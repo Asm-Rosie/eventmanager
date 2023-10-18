@@ -17,9 +17,21 @@ use std::time::Duration;
 
 #[no_mangle]
 pub extern "C" fn check_if_event_expired() {
+
+    let mut filename = "data.txt".to_string();
+
+    if cfg!(target_os = "windows") {
+        if let Some(document_dir) = dirs::document_dir() {
+            
+            filename = document_dir.join("eventmanager_data").join("data.txt").to_str().unwrap().to_string();
+            println!("file path: {}", filename);
+        } else {
+            println!("error");
+        }
+    }
     
     loop {
-        let file = File::open("data.txt").expect("Failed to open file");
+        let file = File::open(&filename).expect("Failed to open file");
         let reader = BufReader::new(file);
 
         let current_date = Local::today().naive_local();
