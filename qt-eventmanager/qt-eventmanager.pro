@@ -29,18 +29,17 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -leventmanager_core
-else:unix: LIBS += -L$$PWD/./ -leventmanager_core
-
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
 
+# Windows
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/./ -leventmanager_core
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/./libeventmanager_core.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/./eventmanager_core.lib
-else:unix: PRE_TARGETDEPS += $$PWD/./libeventmanager_core.a
+win32: LIBS += -L$$PWD/./ -leventmanager_core.dll
 
-unix|win32: LIBS += -L$$PWD/./ -leventmanager_core.dll
+# MacOS
+macx: LIBS += -L$$PWD/./ -leventmanager_core -framework CoreAudio -framework AudioToolbox
 
-INCLUDEPATH += $$PWD/.
-DEPENDPATH += $$PWD/.
-
+macx: PRE_TARGETDEPS += $$PWD/./libeventmanager_core.a
