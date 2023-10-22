@@ -1,6 +1,15 @@
 # eventmanager
 manage your personal tasks! 
 
+# IMPORTANT!
+I have acknowleged that the approaches for making the UI were unefficent and definetly not needed for such an simple application, I apologise for making this project harder as it should be. 
+
+to make the contributions friendlier and easier, I am right now working to transfer the UI to electron which would make it far easier to compiling for any platform seamlessly. 
+
+the core functions will be kept and maintained with the same techniques. it might happen that the rust core will be rather renamed to "core" due of the fact it might happen that other languages for example C and C++ will be integrated.
+
+
+
 # MacOS instructions
 the following below will explain how you can build it yourself using macOS, a prebuilt app can be found in the [release tab](https://github.com/AkameTheCoder/eventmanager/releases).
 
