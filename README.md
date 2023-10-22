@@ -2,7 +2,7 @@
 manage your personal tasks! 
 
 # IMPORTANT!
-I have acknowleged that the approaches for making the UI were unefficent and definetly not needed for such an simple application, I apologise for making this project harder as it should be. 
+I have acknowleged that the approaches for making the UI was inefficent and definetly not needed for such an simple application, I apologise for making this project harder as it should be. 
 
 to make the contributions friendlier and easier, I am right now working to transfer the UI to electron which would make it far easier to compiling for any platform seamlessly. 
 
